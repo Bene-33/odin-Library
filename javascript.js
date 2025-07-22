@@ -1,7 +1,10 @@
+const myLibrary = []
+
 function Book(title, author, pages, read){
     if (!new.target) {
         throw Error("error use new operator")
     }
+    this.id = crypto.randomUUID()
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -11,6 +14,11 @@ function Book(title, author, pages, read){
     }
 }
 
+function adBookToLibrary() {
+
+}
+
 const theHobbit = new Book("The Hobbit", "by J.R.R. Tolkien", "295 pages", "not read yet")
 
 console.log(theHobbit.info())
+console.log(myLibrary)
