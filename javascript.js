@@ -1,10 +1,10 @@
 const myLibrary = []
 
-function Book(title, author, pages, read){
+function Book(ID, title, author, pages, read){
     if (!new.target) {
         throw Error("error use new operator")
     }
-    this.id = crypto.randomUUID()
+    this.id = ID;
     this.title = title;
     this.author = author;
     this.pages = pages;
