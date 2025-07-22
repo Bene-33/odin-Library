@@ -1,24 +1,22 @@
 const myLibrary = []
 
-function Book(ID, title, author, pages, read){
+function Book(title, author, pages, read, ID){
     if (!new.target) {
         throw Error("error use new operator")
     }
-    this.id = ID;
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read
-    this.info = function(){
-        return this.title+" "+this.author+", "+this.pages+", "+this.read 
-    }
+    this.read = read;
+    this.id = ID;
 }
 
-function adBookToLibrary() {
+function addBookToLibrary(title, author, pages, read, ID) {
+    let newBook = new Book(title,author,pages,read,crypto.randomUUID())
+    myLibrary.push(newBook)
 
 }
 
-const theHobbit = new Book("The Hobbit", "by J.R.R. Tolkien", "295 pages", "not read yet")
 
-console.log(theHobbit.info())
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "no")
 console.log(myLibrary)
