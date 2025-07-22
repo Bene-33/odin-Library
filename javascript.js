@@ -18,5 +18,10 @@ function addBookToLibrary(title, author, pages, read, ID) {
 }
 
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "no")
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
+addBookToLibrary("No Logo!", "Naomi Klein", "295", "yes")
+addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no")
+
+
 console.log(myLibrary)
