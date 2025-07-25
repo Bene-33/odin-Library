@@ -35,14 +35,13 @@ for (let i = 0; i < book.length-1; i++){
     const pages = document.createElement("div");
     const read = document.createElement("div");
     bookContainer.classList.add("bookContainer");
-    title.classList.add("booksTitle");
     author.classList.add("booksAuthor");
     pages.classList.add("booksPages");
     read.classList.add("booksRead");
-    title.textContent = myLibrary[i].title
-    author.textContent = myLibrary[i].author;
-    pages.textContent = myLibrary[i].pages;
-    read.textContent = myLibrary[i].read;
+    title.textContent = "Title: " + myLibrary[i].title
+    author.textContent = "Autohr: " + myLibrary[i].author;
+    pages.textContent = "Pages: " + myLibrary[i].pages;
+    read.textContent = "Read? " + myLibrary[i].read;
     books.appendChild(bookContainer);
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
