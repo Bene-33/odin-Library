@@ -1,6 +1,7 @@
 const myLibrary = []
 
-function Book(title, author, pages, read, ID){
+
+function book(title, author, pages, read, ID){
     if (!new.target) {
         throw Error("error use new operator")
     }
@@ -12,7 +13,7 @@ function Book(title, author, pages, read, ID){
 }
 
 function addBookToLibrary(title, author, pages, read, ID) {
-    let newBook = new Book(title,author,pages,read,crypto.randomUUID())
+    let newBook = new book(title,author,pages,read,crypto.randomUUID())
     myLibrary.push(newBook)
 
 }
@@ -25,3 +26,26 @@ addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no"
 
 
 console.log(myLibrary)
+
+for (let i = 0; i < book.length-1; i++){
+    const books = document.querySelector(".books");
+    const bookContainer = document.createElement("div");
+    const title = document.createElement("div");
+    const author = document.createElement("div");
+    const pages = document.createElement("div");
+    const read = document.createElement("div");
+    bookContainer.classList.add("bookContainer");
+    title.classList.add("booksTitle");
+    author.classList.add("books.author");
+    pages.classList.add("booksPages");
+    read.classList.add("booksRead");
+    title.textContent = myLibrary[i].title
+    author.textContent = myLibrary[i].author;
+    pages.textContent = myLibrary[i].pages;
+    read.textContent = myLibrary[i].read;
+    books.appendChild(bookContainer);
+    bookContainer.appendChild(title);
+    bookContainer.appendChild(author);
+    bookContainer.appendChild(pages);
+    bookContainer.appendChild(read);
+}
