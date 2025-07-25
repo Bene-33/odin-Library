@@ -36,7 +36,7 @@ for (let i = 0; i < book.length-1; i++){
     const read = document.createElement("div");
     bookContainer.classList.add("bookContainer");
     title.classList.add("booksTitle");
-    author.classList.add("books.author");
+    author.classList.add("booksAuthor");
     pages.classList.add("booksPages");
     read.classList.add("booksRead");
     title.textContent = myLibrary[i].title
