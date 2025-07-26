@@ -1,6 +1,5 @@
 const myLibrary = []
 
-
 function book(title, author, pages, read, ID){
     if (!new.target) {
         throw Error("error use new operator")
@@ -18,6 +17,9 @@ function addBookToLibrary(title, author, pages, read, ID) {
 
 }
 
+const newBookButton = document.querySelector("#newBookButton")
+
+newBookButton.onclick = () => addBookToLibrary()
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
 addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
@@ -48,3 +50,4 @@ for (let i = 0; i < book.length-1; i++){
     bookContainer.appendChild(pages);
     bookContainer.appendChild(read);
 }
+
