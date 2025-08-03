@@ -17,19 +17,24 @@ function addBookToLibrary(title, author, pages, read, ID) {
 
 }
 
-const newBookButton = document.querySelector("#newBookButton")
+const newBookModal = document.querySelector(".newBookModal");
+const newBookButton = document.querySelector("#newBookButton");
+const closeBookModal = document.querySelector(".closeButton");
 
-newBookButton.onclick = () => addBookToLibrary()
+newBookButton.onclick = () => {
+    newBookModal.showModal();
+};
+
+closeBookModal.onclick = () =>{
+    newBookModal.close();
+};
 
 // temp ------------------------------------------------------------------------------
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
 addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
 addBookToLibrary("No Logo!", "Naomi Klein", "295", "yes")
 addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no")
-
-
 console.log(myLibrary)
-
 // temp end ------------------------------------------------------------------------------
 
 for (let i = 0; i < book.length-1; i++){
