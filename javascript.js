@@ -1,21 +1,21 @@
-const myLibrary = []
+const myLibrary = [];
 
 function book(title, author, pages, read, ID){
     if (!new.target) {
         throw Error("error use new operator")
-    }
+    };
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.id = ID;
-}
+};
 
 function addBookToLibrary(title, author, pages, read, ID) {
     let newBook = new book(title,author,pages,read,crypto.randomUUID())
     myLibrary.push(newBook)
 
-}
+};
 
 const newBookModal = document.querySelector(".newBookModal");
 const newBookButton = document.querySelector("#newBookButton");
@@ -57,4 +57,4 @@ for (let i = 0; i < book.length-1; i++){
     bookContainer.appendChild(author);
     bookContainer.appendChild(pages);
     bookContainer.appendChild(read);
-}
+};
