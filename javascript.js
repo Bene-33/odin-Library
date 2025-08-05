@@ -28,7 +28,7 @@ function addBookToLibrary(title, author, pages, read, ID) {
 //display new book to library
 function displayLibrary(){
     removeOldLibrary();
-    for (let i = 0; i < book.length; i++){
+    for (let i = 0; i < myLibrary.length; i++){
         const books = document.querySelector(".books");
         const bookContainer = document.createElement("div");
         const title = document.createElement("div");
@@ -80,6 +80,5 @@ submitNewBook.onclick = () => {
     const bookRead = document.querySelector('input[name="bookRead"]').checked;
     addBookToLibrary(bookTitle, bookAuthor, bookPages,bookRead);
     event.preventDefault();
-    console.log(myLibrary);
     displayLibrary();
 };
