@@ -20,16 +20,16 @@
     </div>
     <dialog open class="newBookModal">
         <button class="closeButton">X</button>
-        <p>Add a new Book</p>
-        <form class="newBookForm">
+        <p>add a new Book</p>
+        <form class="newBookForm" method="post">
             <label for="bookTitle">Title:</label>
-            <input type="text" id="bookTitle" value="" required><br>
+            <input type="text" id="bookTitle" name="bookTitle" value="" required><br>
             <label for="bookAuthor">Author:</label>
-            <input type="text" id="bookAuthor" value="" required><br>
+            <input type="text" id="bookAuthor" name="bookAuthor" value="" required><br>
             <label for="bookPages">Pages:</label>
-            <input type="number" id="bookPages"><br>
+            <input type="number" name="bookPages" id="bookPages"><br>
             <label for="bookRead">Have you read the book?</label>
-            <input id="bookRead" type="checkbox" required><br><br>
+            <input id="bookRead" type="checkbox" name= "bookRead"><br><br>
             <input type="submit" value="+"></input>        
         </form>
     </dialog>
