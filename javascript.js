@@ -27,6 +27,7 @@ function addBookToLibrary(title, author, pages, read, ID) {
 
 //display new book to library
 function displayLibrary(){
+    removeOldLibrary();
     for (let i = 0; i < book.length; i++){
         const books = document.querySelector(".books");
         const bookContainer = document.createElement("div");
@@ -50,6 +51,14 @@ function displayLibrary(){
     };
 };
 
+// remove old displayed Library
+function removeOldLibrary(){
+    const oldLibrary = document.querySelector(".books");
+    while(oldLibrary.firstChild){
+        oldLibrary.removeChild(oldLibrary.firstChild);
+    };
+};
+
 //modal functions to input new books
 const newBookModal = document.querySelector(".newBookModal");
 const newBookButton = document.querySelector("#newBookButton");
@@ -69,8 +78,8 @@ submitNewBook.onclick = () => {
     const bookAuthor = document.querySelector('input[name="bookAuthor"]').value;
     const bookPages = document.querySelector('input[name="bookPages"]').value;
     const bookRead = document.querySelector('input[name="bookRead"]').checked;
-
     addBookToLibrary(bookTitle, bookAuthor, bookPages,bookRead);
     event.preventDefault();
+    console.log(myLibrary);
     displayLibrary();
 };
