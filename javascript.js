@@ -19,10 +19,10 @@ function addBookToLibrary(title, author, pages, read, ID) {
 };
 
 // temp ------------------------------------------------------------------------------
-// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
-// addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
-// addBookToLibrary("No Logo!", "Naomi Klein", "295", "yes")
-// addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no")
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
+addBookToLibrary("No Logo!", "Naomi Klein", "295", "yes")
+addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no")
 // temp end ------------------------------------------------------------------------------
 
 //display new book to library
@@ -35,23 +35,29 @@ function displayLibrary(){
         const author = document.createElement("div");
         const pages = document.createElement("div");
         const read = document.createElement("div");
+        const removeBookButton = document.createElement("button");
         bookContainer.classList.add("bookContainer");
+        bookContainer.setAttribute("data-id", myLibrary[i].id);
         author.classList.add("booksAuthor");
         pages.classList.add("booksPages");
         read.classList.add("booksRead");
+        removeBookButton.classList.add("removeBookButton");
         title.textContent = "Title: " + myLibrary[i].title;
         author.textContent = "Autohr: " + myLibrary[i].author;
         pages.textContent = "Pages: " + myLibrary[i].pages;
         read.textContent = "Read? " + myLibrary[i].read;
+        removeBookButton.textContent ="remove";
+        removeBookButton.setAttribute("data-id", myLibrary[i].id);
         books.appendChild(bookContainer);
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
         bookContainer.appendChild(pages);
         bookContainer.appendChild(read);
+        bookContainer.appendChild(removeBookButton);
     };
 };
 
-// remove old displayed Library
+// remove old displayed library
 function removeOldLibrary(){
     const oldLibrary = document.querySelector(".books");
     while(oldLibrary.firstChild){
@@ -81,4 +87,22 @@ submitNewBook.onclick = () => {
     addBookToLibrary(bookTitle, bookAuthor, bookPages,bookRead);
     event.preventDefault();
     displayLibrary();
+};
+
+remove book from the library
+const removeBookButton = document.querySelector("[data-id-removeBookButton]");
+
+removeBookButton.onClick = () => {
+    let id = removeBookButton;
+    removeBook(id);
+}
+
+console.log(removeBookButton);
+
+function removeBook(){
+    const bookToRemove = document.querySelector(".bookContainer")
+    const bookID = bookToRemove.getAttribute("data-id");
+    while(bookToRemove.firstChild){
+        bookToRemove.removeChild(bookToRemove.firstChild);
+    };
 };
