@@ -36,24 +36,31 @@ function displayLibrary(){
         const pages = document.createElement("div");
         const read = document.createElement("div");
         const removeBookButton = document.createElement("button");
+
         bookContainer.classList.add("bookContainer");
-        bookContainer.setAttribute("data-id", myLibrary[i].id);
         author.classList.add("booksAuthor");
         pages.classList.add("booksPages");
         read.classList.add("booksRead");
         removeBookButton.classList.add("removeBookButton");
+        
         title.textContent = "Title: " + myLibrary[i].title;
         author.textContent = "Autohr: " + myLibrary[i].author;
         pages.textContent = "Pages: " + myLibrary[i].pages;
         read.textContent = "Read? " + myLibrary[i].read;
         removeBookButton.textContent ="remove";
+        
         removeBookButton.setAttribute("data-id", myLibrary[i].id);
+        
         books.appendChild(bookContainer);
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
         bookContainer.appendChild(pages);
         bookContainer.appendChild(read);
         bookContainer.appendChild(removeBookButton);
+
+        removeBookButton.onclick = function() {
+            removeBook(this.getAttribute("data-id"));
+        };
     };
 };
 
@@ -87,22 +94,12 @@ submitNewBook.onclick = () => {
     addBookToLibrary(bookTitle, bookAuthor, bookPages,bookRead);
     event.preventDefault();
     displayLibrary();
+    newBookModal.close();
 };
 
-remove book from the library
-const removeBookButton = document.querySelector("[data-id-removeBookButton]");
-
-removeBookButton.onClick = () => {
-    let id = removeBookButton;
-    removeBook(id);
-}
-
-console.log(removeBookButton);
-
-function removeBook(){
-    const bookToRemove = document.querySelector(".bookContainer")
-    const bookID = bookToRemove.getAttribute("data-id");
-    while(bookToRemove.firstChild){
-        bookToRemove.removeChild(bookToRemove.firstChild);
-    };
+//remove book from the library
+function removeBook(id){
+    const selectedBook = myLibrary.findIndex(book => book.id === id);
+    myLibrary.splice(selectedBook, 1);
+    displayLibrary();
 };
