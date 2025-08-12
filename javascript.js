@@ -22,13 +22,6 @@ function addBookToLibrary(title, author, pages, read, ID) {
     myLibrary.push(newBook)
 };
 
-// temp ------------------------------------------------------------------------------
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
-addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", 1238, false)
-addBookToLibrary("No Logo!", "Naomi Klein", 295, true)
-addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", 288, false)
-// temp end ------------------------------------------------------------------------------
-
 //display new book to library
 function displayLibrary(){
     removeOldLibrary();
