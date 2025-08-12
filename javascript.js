@@ -12,17 +12,21 @@ function book(title, author, pages, read, ID){
     this.id = ID;
 };
 
+//toggle the books Read Status
+book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, read, ID) {
     let newBook = new book(title,author,pages,read,crypto.randomUUID())
     myLibrary.push(newBook)
-
 };
 
 // temp ------------------------------------------------------------------------------
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes")
-addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1238", "yes")
-addBookToLibrary("No Logo!", "Naomi Klein", "295", "yes")
-addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", "288", "no")
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", 1238, false)
+addBookToLibrary("No Logo!", "Naomi Klein", 295, true)
+addBookToLibrary("The Witcher - the Last Wish", "Andrzej Sapkowski", 288, false)
 // temp end ------------------------------------------------------------------------------
 
 //display new book to library
@@ -30,38 +34,45 @@ function displayLibrary(){
     removeOldLibrary();
     for (let i = 0; i < myLibrary.length; i++){
         const books = document.querySelector(".books");
-        const bookContainer = document.createElement("div");
-        const title = document.createElement("div");
-        const author = document.createElement("div");
-        const pages = document.createElement("div");
-        const read = document.createElement("div");
-        const removeBookButton = document.createElement("button");
 
+        const bookContainer = document.createElement("div");
         bookContainer.classList.add("bookContainer");
-        author.classList.add("booksAuthor");
-        pages.classList.add("booksPages");
-        read.classList.add("booksRead");
-        removeBookButton.classList.add("removeBookButton");
         
+        const title = document.createElement("div");
         title.textContent = "Title: " + myLibrary[i].title;
+
+        const author = document.createElement("div");
+        author.classList.add("booksAuthor");
         author.textContent = "Autohr: " + myLibrary[i].author;
+
+        const pages = document.createElement("div");
+        pages.classList.add("booksPages");
         pages.textContent = "Pages: " + myLibrary[i].pages;
-        read.textContent = "Read? " + myLibrary[i].read;
+
+        const read = document.createElement("button");
+        read.classList.add("booksRead");
+        read.textContent = `Read? ${myLibrary[i].read ? "read!" : "not read"}`;
+        read.onclick = function() {
+            myLibrary[i].toggleReadStatus();
+            read.textContent = `Read ? ${myLibrary[i].read ? "read!" : "not read"}`;
+        };
+        
+        const removeBookButton = document.createElement("button");
+        removeBookButton.classList.add("removeBookButton");
         removeBookButton.textContent ="remove";
-        
         removeBookButton.setAttribute("data-id", myLibrary[i].id);
-        
+        removeBookButton.onclick = function() {
+            removeBook(this.getAttribute("data-id"));
+        };
+
         books.appendChild(bookContainer);
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
         bookContainer.appendChild(pages);
         bookContainer.appendChild(read);
         bookContainer.appendChild(removeBookButton);
-
-        removeBookButton.onclick = function() {
-            removeBook(this.getAttribute("data-id"));
-        };
     };
+    console.log(myLibrary)
 };
 
 // remove old displayed library
@@ -103,3 +114,4 @@ function removeBook(id){
     myLibrary.splice(selectedBook, 1);
     displayLibrary();
 };
+
