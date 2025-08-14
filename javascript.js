@@ -32,11 +32,12 @@ function displayLibrary(){
         bookContainer.classList.add("bookContainer");
         
         const title = document.createElement("div");
+        title.classList.add("booksTitle");
         title.textContent = "Title: " + myLibrary[i].title;
 
         const author = document.createElement("div");
         author.classList.add("booksAuthor");
-        author.textContent = "Autohr: " + myLibrary[i].author;
+        author.textContent = "Author: " + myLibrary[i].author;
 
         const pages = document.createElement("div");
         pages.classList.add("booksPages");
