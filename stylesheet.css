@@ -69,3 +69,15 @@ button{
 .booksRead{
     background-color: #666699;
 }
+
+.closeButton{
+    background-color: #ffffff;
+    font-size: large;
+    justify-self: right;
+}
+
+form button{
+    background-color: #00FF55;
+    font-weight:bold;
+    padding: 0.5rem 1rem;
+}
