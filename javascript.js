@@ -11,12 +11,16 @@ class book {
         this.pages = pages;
         this.read = read;
         this.id = ID;
-    }
+    };
+    toggleReadStatus() {
+        this.read = !this.read;
+    };
+    removeBook(id){
+        const selectedBook = myLibrary.findIndex(book => book.id === id);
+        myLibrary.splice(selectedBook, 1);
+        displayLibrary();
 };
-
-//toggle the books Read Status
-book.prototype.toggleReadStatus = function() {
-    this.read = !this.read;
+    
 };
 
 function addBookToLibrary(title, author, pages, read, ID) {
@@ -58,7 +62,7 @@ function displayLibrary(){
         removeBookButton.textContent ="remove";
         removeBookButton.setAttribute("data-id", myLibrary[i].id);
         removeBookButton.onclick = function() {
-            removeBook(this.getAttribute("data-id"));
+            myLibrary[i].removeBook();
         };
 
         books.appendChild(bookContainer);
@@ -103,11 +107,3 @@ submitNewBook.onclick = () => {
     displayLibrary();
     newBookModal.close();
 };
-
-//remove book from the library
-function removeBook(id){
-    const selectedBook = myLibrary.findIndex(book => book.id === id);
-    myLibrary.splice(selectedBook, 1);
-    displayLibrary();
-};
-
