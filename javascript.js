@@ -1,15 +1,17 @@
 // basic library functions
 const myLibrary = [];
 
-function book(title, author, pages, read, ID){
-    if (!new.target) {
-        throw Error("error use new operator")
-    };
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = ID;
+class book {
+    constructor(title, author, pages, read, ID) {
+        if (!new.target) {
+            throw Error("error use new operator")
+        };
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = ID;
+    }
 };
 
 //toggle the books Read Status
