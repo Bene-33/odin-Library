@@ -97,13 +97,22 @@ closeBookModal.onclick = () => {
     newBookModal.close();
 };
 
-submitNewBook.onclick = () => {
+submitNewBook.onclick = (event) => {
+    event.preventDefault();
+    const form = document.querySelector(".newBookForm");
     const bookTitle = document.querySelector('input[name="bookTitle"]').value;
     const bookAuthor = document.querySelector('input[name="bookAuthor"]').value;
     const bookPages = document.querySelector('input[name="bookPages"]').value;
     const bookRead = document.querySelector('input[name="bookRead"]').checked;
+    
+    if(!form.reportValidity()){
+        return;
+    };
+    
     addBookToLibrary(bookTitle, bookAuthor, bookPages,bookRead);
-    event.preventDefault();
     displayLibrary();
     newBookModal.close();
 };
+
+
+
